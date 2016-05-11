@@ -12,7 +12,7 @@ def print_help_and_exit(directives)
   print "#{File.basename(File.expand_path("."))}".blue.bold
   puts ":".blue
   directives = { default: directives } if directives.is_a?(String)
-  directives.each{|key, command| puts "  #{key.to_s.ljust(10).magenta} #{"->".light_black} #{command}"}
+  directives.each{|key, command| puts "  #{key.to_s.ljust(10).magenta} #{"->".light_black} #{command.length > 30 ? (command[0..60] + "...") : command}"}
   puts ""
   exit
 end
