@@ -5,13 +5,21 @@ A super simple app runner script
 Every app I work on seems to have a different way of running it, and I couldn't keep track. I wanted to be able to navigate to any app directory in the terminal and run a simple command to launch the app in focus.
 
 ## The Solution
-This simple ruby script expects a file called `.run` in the current directory with an instruction to execute. Put the script somewhere on your machine, make it executable with `chmod +x` and symlink it to somewhere in your path (e.g., `ln -s /usr/local/dotrun /path/to/dotrun.rb`) and you can run it from anywhere that you've defined a `.run` file.
-
-Simply navigate to the directory of your app, and run
+This simple ruby script expects a file called `.run` in the current directory with an instruction to execute. Define a new `.run` file for each of the apps on your system. Then simply navigate to the directory of your app, and run
 ```
-dotrun
+$  dotrun
 ```
 and it will run the command you've specified. It will also clear your terminal and tell you some useful information like the current git branch, and hitting `Ctrl+C` will terminate the process (gracefully, hopefully).
+
+## Installation
+```
+gem install dotrun
+```
+Or add `'dotrun'` to your Gemfile.
+
+## Additional Features
+
+### Store multiple directives
 
 For even more usefulness, you can provide multiple commands in the file to specify different things to launch. For example:
 
@@ -19,22 +27,23 @@ For even more usefulness, you can provide multiple commands in the file to speci
 server: unicorn_rails --host 127.0.0.1
 console: rails c
 sidekiq: bundle exec sidekiq
+tunnel: "ssh -L 33061:mysqlserver.my.net:3306 user@ssh.my.net"
 log: tail -f log/development.log
 ```
 
-You can then run
+You can then run, for example,
 ```
-dotrun server
+$  dotrun sidekiq
 ```
-to run the unicorn script above.
+to run the sidekiq script above.
 
-### List directives
-To get a list of possible directives for the current directory:
+### View a list of available directives
+To see a list of the directives you've defined for the current directory:
 ```
-dotrun -?
+$  dotrun -?
 ```
 
-### Run multiple commands at once
+### Run multiple directives at once
 **This feature requires that [ttab](https://www.npmjs.com/package/ttab) is installed.** Run multiple commands in different tabs of your terminal window by specifying an array of commands in your `.run` directives file. For example:
 
 ```yaml

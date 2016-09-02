@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require 'dotrun'
+Dotrun.new.run(ARGV[0])

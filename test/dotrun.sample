@@ -1,0 +1,5 @@
+default: "echo default result"
+sample: "echo sample result"
+multi:
+  - default
+  - sample
