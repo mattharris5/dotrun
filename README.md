@@ -1,6 +1,8 @@
 # dotrun
 A super simple app runner script
 
+[![Gem Version](https://badge.fury.io/rb/dotrun.svg)](https://badge.fury.io/rb/dotrun)
+
 ## The Problem
 Every app I work on seems to have a different way of running it, and I couldn't keep track. I wanted to be able to navigate to any app directory in the terminal and run a simple command to launch the app in focus.
 
