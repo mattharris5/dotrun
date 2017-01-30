@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'dotrun'
-  s.version     = '0.0.1'
-  s.date        = '2016-09-01'
+  s.version     = '0.0.2'
+  s.date        = '2017-01-30'
   s.summary     = "Simply run your app"
   s.description = "A simple app runner tool"
   s.authors     = ["Matt Harris"]

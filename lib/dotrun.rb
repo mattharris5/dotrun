@@ -65,15 +65,16 @@ class Dotrun
   end
 
   # Execute multiple commands in multiple tabs using `ttab`
-  def exec_multiple_directives(directive, command)
+  def exec_multiple_directives(directive, command, auto_close = false)
     check_for_ttab
     prep_screen
     puts "\n\n\n"
     puts "Running multiple directives in separate tabs:".green
+    exit_cmd = "exit;" if auto_close
     for d in command
       print "  #{d}".ljust(20).magenta
       sleep 2
-      system %(ttab -G eval "dotrun #{d}; exit")
+      system %(ttab -G eval "dotrun #{d}; #{exit_cmd}")
       puts " ✔︎".magenta
     end
     puts ""
